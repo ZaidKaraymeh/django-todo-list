@@ -1,0 +1,22 @@
+{% extends 'todo/base.html' %}
+{% load crispy_forms_tags %}
+ {% block content %}
+
+<form method="POST">
+    {% csrf_token %}
+
+    <fieldset class="form-group" > 
+        <legend> Add New Project Title </legend>
+        {{form.project_title}}
+        {{ form.media }}
+    </fieldset>
+    <div class="form-group">
+        <button type="submit" class="btn btn-primary" > Submit </button>
+    </div>
+</form>
+
+
+
+    
+
+{%endblock content %}

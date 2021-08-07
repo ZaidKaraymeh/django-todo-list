@@ -8,29 +8,36 @@
 
 
 {% block sidebarTasks %}
-    <a>
-    <button class="btn btn-toggle align-items-center rounded collapsed  btn-primary"  style="width:100%;"  data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-    <i class="fas fa-caret-down "></i>
-          Dashboard
+
+    {% for project in projects %}
     
-    </button>
+    
+    <a>
+        <button class="btn btn-toggle align-items-center rounded collapsed  btn-primary"  style="width:100%;"  data-bs-toggle="collapse" data-bs-target="#dashboard-collapse{{project.id}}" aria-expanded="false">
+        <i class="fas fa-caret-down "></i>
+            {{project.title}}
+        
+        </button>
     </a>
-    <div class="collapse" id="dashboard-collapse" class="p-0" style="">
+    
+    
+    <div class="collapse" id="dashboard-collapse{{project.id}}" class="p-0" style="">
           <ul class="btn-toggle-nav list-unstyled fw-normal p-0 small">
             {% comment %} <li><a href="#" class=" ">Overview</a></li> {% endcomment %}
-            <li> <a class="text-decoration-none text-light p-4" href="{% url 'todo-newTask'%}"
+            <li> <a class="text-decoration-none text-light p-4" href="{% url 'todo-newTask' project.title%}"
                 ><i class="far fa-plus-square"></i> New Task</a
               >
               </li>
-            {% for task in tasks %}
+            {% for task in project.tasks %}
             
                 <li><a class="text-decoration-none text-light p-4" href="{% url 'todo-task' task.id %}">
-                {{task.title}}</a>
+                {{task}}</a>
                 </li>
             
             {% endfor %}
           </ul>
     </div>
+    {% endfor %}
 
 
 {% endblock sidebarTasks %}
