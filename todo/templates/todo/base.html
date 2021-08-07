@@ -1,0 +1,101 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="{% static 'management/bootstrap.min.css' %}" />
+
+    <link rel="stylesheet" href="{% static 'management/main.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% if request.user.is_authenticated %}
+    <title>Todo List - {{request.user}}</title>
+    {% else %}
+    <title>Todo List</title>
+    {%endif%}
+
+    {% block formHeader %}{% endblock formHeader %}
+  </head>
+
+  <body class="">
+    <main class="container-fluid m-0">
+      <div class="row" style="height: 100vh">
+        <div class="col-2 p-0">
+          <nav class="header">
+            <div class="border-bottom text-wrap text-center p-3">
+              <h3>
+                <a class="text-decoration-none text-light" href="{% url 'todo-home' %}"
+                  >Todo List
+                </a>
+              </h3>
+            </div>
+            <div
+              class="
+                d-flex
+                flex-column
+                align-items-center
+                space-evenly
+                mb-3
+                text-decoration-none text-white
+                header-items
+              "
+            >
+            {% if  request.user.is_authenticated %}
+            
+              <a class="text-decoration-none text-light p-4" href="{% url 'todo-newTask'%}"
+                ><i class="far fa-plus-square"></i> New Project</a
+              >
+              <a class="text-decoration-none text-light p-4 border-bottom" href="{% url 'logout'%}" style="width: 100%;"
+                ><i class="fas fa-sign-out-alt"></i> Logout</a
+              >
+              
+              {% block sidebarTasks %}{% endblock sidebarTasks %}
+
+              {% else %}
+              
+              <a class="text-decoration-none text-light p-4" href="{% url 'login'%}"
+                ><i class="fas fa-sign-in-alt"></i> Log In</a
+              >
+              <a class="text-decoration-none text-light p-4" href="{% url 'register'%}"
+                ><i class="fas fa-user-circle"></i> Register</a
+              >
+            {% endif %}
+            </div>
+          </nav>
+        </div>
+        <div class="col-10 p-0 bg-light  overflow-hidden">
+          {% if messages %} {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">{{message}}</div>
+          {% endfor %} {% endif %}
+          <div class="row p-0 m-0 "> 
+             {% block content %}{% endblock content %}
+          </div>
+        </div>
+      </div>
+    </main>
+    
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+  </script>
+  <script src="{% static '/js/sidebar.js' %}"></script>
+  </body>
+</html>

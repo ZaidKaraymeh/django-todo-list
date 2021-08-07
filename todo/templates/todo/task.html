@@ -1,0 +1,31 @@
+{% extends 'todo/base.html' %}
+
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <form  method="POST">
+        {% csrf_token %}
+        
+        <fieldset class="form-group"> 
+            <legend> {{form.title}} </legend>
+            {{ form|crispy }}
+            {{form.media}}
+        </fieldset>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary" > Submit </button>
+        </div>
+    </form>
+{%endblock content %}
+
+
+{% block sidebarTasks %}
+
+    {% for task in tasks %}
+    
+        <a class="text-decoration-none text-light p-4" href="{% url 'todo-task' task.id %}">
+        {{task.title}}</a>
+    
+    {% endfor %}
+
+{% endblock sidebarTasks %}
