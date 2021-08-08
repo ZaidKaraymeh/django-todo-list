@@ -39,9 +39,9 @@
 
   <body class="">
     <main class="container-fluid m-0">
-      <div class="row" style="height: 100vh">
-        <div class="col-2 p-0">
-          <nav class="header">
+      <div class="row" >
+        <div class="col-2 p-0 position-relative" >
+          <nav class="header position-fixed">
             <div class="border-bottom text-wrap text-center p-3">
               <h3>
                 <a class="text-decoration-none text-light" href="{% url 'todo-home' %}"
@@ -68,9 +68,7 @@
               <a class="text-decoration-none text-light p-4 border-bottom" href="{% url 'logout'%}" style="width: 100%;"
                 ><i class="fas fa-sign-out-alt"></i> Logout</a
               >
-              
-              {% block sidebarTasks %}{% endblock sidebarTasks %}
-
+                {% block sidebarTasks %}{% endblock sidebarTasks %}
               {% else %}
               
               <a class="text-decoration-none text-light p-4" href="{% url 'login'%}"
@@ -83,7 +81,7 @@
             </div>
           </nav>
         </div>
-        <div class="col-10 p-0 bg-light  overflow-hidden">
+        <div class="col-10 p-0 bg-light">
           {% if messages %} {% for message in messages %}
           <div class="alert alert-{{ message.tags }}">{{message}}</div>
           {% endfor %} {% endif %}
