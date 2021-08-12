@@ -96,3 +96,10 @@ footer {
     display: none ;
 }
 
+@media only screen and (max-width: 1200px) {
+  /* For tablet phones: */
+  [class*="scrollable"] {
+    overflow-y: scroll !important;
+    overflow-x: hidden !important;
+  }
+}

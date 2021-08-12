@@ -37,37 +37,43 @@ Sed a metus nec massa scelerisque cursus vel vel nunc. Praesent non nisi at arcu
 
 
 {% block sidebarTasks %}
-        <div class="" style="overflow-y: scroll; height: 72vh;">
+        <h4 class="text-decoration-none text-light p-4 text-center border-bottom"> My Projects </h4>
 
-            <h4 class="text-decoration-none text-light p-4 text-center border-bottom"> My Projects </h4>
-            {% for project in projects %}
-            
-                <a class="border-bottom" >
-                    <button class="btn btn-toggle align-items-center rounded collapsed  btn-primary "  style="width:100%;"  data-bs-toggle="collapse" data-bs-target="#dashboard-collapse{{project.id}}" aria-expanded="false">
-                    <i class="fas fa-caret-down "></i>
-                        {{project.title}}
+        {% if not projectCount == 0 %}
+        
+        
+            <div class="" style="overflow-y: scroll !important; height: 61vh; width: 100%;">
+
+                {% for project in projects %}
+                
+                    <a class="border-bottom" >
+                        <button class="btn btn-toggle align-items-center rounded collapsed  btn-primary "  style="width:100%;"  data-bs-toggle="collapse" data-bs-target="#dashboard-collapse{{project.id}}" aria-expanded="false">
+                        <i class="fas fa-caret-down "></i>
+                            {{project.title}}
+                        
+                        </button>
+                    </a>
                     
-                    </button>
-                </a>
-                
-                
-                <div class="collapse" id="dashboard-collapse{{project.id}}" class="p-0" style="">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal p-0 small">
-                        {% comment %} <li><a href="#" class=" ">Overview</a></li> {% endcomment %}
-                        <li> <a class="text-decoration-none text-light p-4" href="{% url 'todo-newTask' project.title%}"
-                            ><i class="far fa-plus-square"></i> New Task</a
-                        >
-                        </li>
-                        {% for task in project.tasks %}
-                        
-                            <li><a class="text-decoration-none text-light p-4" href="{% url 'todo-task' task.id %}">
-                            {{task}}</a>
+                    
+                    <div class="collapse" id="dashboard-collapse{{project.id}}" class="p-0" style="">
+                        <ul class="btn-toggle-nav list-unstyled fw-normal p-0 small">
+                            {% comment %} <li><a href="#" class=" ">Overview</a></li> {% endcomment %}
+                            <li> <a class="text-decoration-none text-light p-4" href="{% url 'todo-newTask' project.title%}"
+                                ><i class="far fa-plus-square"></i> New Task</a
+                            >
                             </li>
-                        
-                        {% endfor %}
-                    </ul>
-                </div>
-            {% endfor %}
-        </div>
+                            {% for task in project.tasks %}
+                            
+                                <li><a class="text-decoration-none text-light p-4" href="{% url 'todo-task' task.id %}">
+                                {{task}}</a>
+                                </li>
+                            
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
 
 {% endblock sidebarTasks %}

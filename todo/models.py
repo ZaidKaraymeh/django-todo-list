@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Project(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     project_title = models.CharField(null= True, max_length=50)
     def __str__(self):
         return self.project_title

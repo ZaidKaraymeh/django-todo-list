@@ -3,33 +3,35 @@ from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from .forms import NewProjectForm, NewTaskForm
 from django.contrib import messages
-
+from django.contrib.auth.models import User
 # Create your views here.
 
 
 def home(request):
+    
     author = request.user
     tasksNotCleaned = Task.objects.filter(author=author)
 
     tasks = [{"task_title": x[2], "id": x[0],} for x in tasksNotCleaned.values_list()]
 
     print("Project Titles: " ,[x for x in tasks])
-
-    projectsNotCleaned = Project.objects.all()
+    print(request.user.id)
+    user = User.objects.get(username=f"{request.user}")
+    projectsNotCleaned = user.project_set.all()
+    print(projectsNotCleaned)
     projects =   [{
-        "title": x[1], 
+        "title": x[2], 
         "id": x[0], 
         "tasks":
-        list(Task.objects.filter(project__project_title = x[1])) 
+        list(Task.objects.filter(project__project_title = x[2])) 
     
     }for x in projectsNotCleaned.values_list()]
     # Task.objects.filter(project__project_title= "iPhone 12").count()
 
-    print("Projects: ", projectsNotCleaned.values_list())
-    print("Tasks: ", tasksNotCleaned.values_list())
-    print(projects[0])
-    context = {"projects":projects}
-
+    print("Projects: ", projectsNotCleaned.values())
+    print("Tasks: ", tasksNotCleaned.values())
+    context = {"projects":projects, "projectCount": projectsNotCleaned.count()}
+    
     return render(request, "todo/home.html", context)
 
 def task(request, id):
