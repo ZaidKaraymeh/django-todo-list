@@ -1,37 +1,15 @@
 {% extends 'todo/base.html' %}
-
+{% load static %}
 {% block content %}
 
-    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed id tristique ex, viverra volutpat lacus. Praesent convallis tellus aliquet lorem venenatis, ut ullamcorper mi varius. Pellentesque a diam tristique, ultricies augue et, dictum justo. Aliquam volutpat erat quis odio eleifend volutpat. In sem enim, iaculis nec eros at, imperdiet tincidunt elit. Pellentesque quam enim, egestas elementum pulvinar fermentum, feugiat id leo. Suspendisse potenti. Integer mattis ex nunc, pretium blandit magna iaculis ut. Praesent pellentesque, purus et fringilla consectetur, nisi quam varius ligula, ut placerat felis enim ut tortor. Quisque ut ultrices velit, at sollicitudin enim. In gravida tempor semper. Quisque nunc ligula, consequat ac lacus vitae, scelerisque porttitor erat.
+    <div class="container   p-5 text-white editable " contenteditable="true" style="overflow-x:hidden; height:100vh;" >
+        <h2 > Getting started </h2>
 
-Pellentesque ac semper urna. Phasellus sem massa, posuere at purus a, eleifend congue metus. Ut erat tortor, semper sodales erat ut, pulvinar volutpat diam. Vestibulum pharetra urna nec ligula semper tincidunt. Phasellus et elit fermentum, mattis justo eu, tempus lectus. Sed euismod nunc et nisl cursus luctus. Donec sapien nulla, bibendum vitae hendrerit vulputate, volutpat eget nisi. Phasellus fringilla odio lorem, non posuere ante viverra a. Nulla facilisi. Morbi pellentesque sodales quam a sagittis. Duis dapibus sem purus, eu lobortis justo interdum at. Proin eget dapibus velit.
+        <p class="mt-5" >  Organize your tasks into projects</p>
+        
+    </div>    
+    <script src="{% static 'js/detail.js' %}" ></script>
 
-Vivamus sed mauris et sem lacinia gravida vel ut nibh. Nam faucibus ut massa sed convallis. Proin non sollicitudin nisl. Fusce dignissim sit amet nibh sit amet imperdiet. Curabitur scelerisque venenatis consectetur. Nam lacus massa, condimentum ac libero a, viverra venenatis sapien. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris suscipit accumsan felis non fermentum. Mauris condimentum ipsum eget lacinia volutpat. Fusce commodo tempus ipsum, a pulvinar massa pulvinar interdum. Vestibulum eleifend mauris id sem maximus ullamcorper. Aliquam erat volutpat.
-
-Sed porta eleifend mattis. In enim augue, dictum in justo nec, lacinia sagittis sapien. Maecenas quis condimentum dolor. Nunc leo ligula, porta a magna vitae, molestie auctor enim. Proin a tellus a leo auctor porttitor a hendrerit arcu. Maecenas congue scelerisque venenatis. Quisque et sapien facilisis, tincidunt ante a, aliquam lectus. Sed congue consequat augue consequat elementum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam aliquet vitae justo id tincidunt. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Phasellus accumsan risus a magna suscipit, vitae euismod ipsum fermentum. Nunc ante lacus, aliquet in convallis eu, ullamcorper a mi.
-
-Sed urna mauris, mattis ut dui et, vulputate pulvinar velit. Curabitur id accumsan lorem. Sed velit magna, fringilla non pharetra in, suscipit ut purus. Nullam luctus ligula ac egestas commodo. Donec a posuere nunc, eget dignissim tortor. Pellentesque non metus sit amet tortor dictum fringilla. Fusce quis mi feugiat, consequat est a, porttitor nisi. Phasellus eget ipsum tortor. Suspendisse tristique finibus tortor ut sollicitudin. Phasellus cursus quis sapien vitae efficitur. Cras mollis in orci vitae varius. Nulla feugiat eros ut risus scelerisque mattis. Aenean nisi lectus, auctor vel nunc non, semper porta odio. In hac habitasse platea dictumst. Vestibulum sit amet tellus interdum, faucibus nisl at, fermentum massa. In hac habitasse platea dictumst.
-
-Integer tincidunt erat erat, in placerat sem bibendum non. Aliquam eleifend erat vel pretium aliquet. In elementum urna ipsum, eu feugiat urna scelerisque eget. Integer vulputate eleifend eros, a pretium mi commodo sit amet. Maecenas commodo lorem lorem, quis accumsan purus sodales non. Sed hendrerit turpis lorem, vel malesuada velit mollis et. Aliquam nibh dui, faucibus eget elit eu, blandit vestibulum eros. Morbi placerat justo vitae nunc convallis, in tempus purus molestie.
-
-Donec eget odio et ante placerat porta et quis ex. Fusce efficitur ipsum ut lacus suscipit, non fringilla ipsum euismod. Aliquam vehicula diam quis purus malesuada, id sagittis risus cursus. Nunc sit amet facilisis velit, ac tempor dolor. Integer vel tellus vitae ligula tincidunt maximus. Vivamus a tempor urna. Quisque tempor erat ut pretium placerat. Etiam eu metus eget quam facilisis congue vitae et nisi. Integer non purus dapibus, consectetur mauris quis, fermentum neque. Aenean tellus mauris, eleifend ut orci sed, tristique iaculis felis. Nunc vitae eros facilisis, iaculis lorem ut, feugiat metus.
-
-Vestibulum vulputate est eu purus viverra, vitae venenatis ante varius. Vivamus mattis tincidunt purus, vel porttitor arcu vehicula nec. Cras eget pharetra nulla. Proin id est nec enim mattis suscipit. Integer a tempor ante. Nunc volutpat leo a dapibus vestibulum. Fusce semper libero at nisl pharetra, in lacinia leo semper. Sed mattis augue ac leo tristique interdum. Nunc at condimentum leo, non dictum sapien. Curabitur gravida suscipit fermentum. Interdum et malesuada fames ac ante ipsum primis in faucibus. Curabitur viverra dolor non orci ultricies, nec aliquam nisi venenatis. Mauris in augue at massa porttitor commodo varius ut arcu. Aenean a auctor risus, ac pretium enim.
-
-Ut fermentum risus cursus, accumsan tellus vitae, interdum nisi. Vestibulum congue nibh eget nisl finibus dignissim. Nullam at nunc vestibulum tortor cursus accumsan ut ac sem. Quisque sit amet leo tincidunt, tincidunt nibh viverra, tempor dolor. Praesent sit amet porta tellus. Phasellus id ligula tempus, ultricies justo in, pretium purus. Donec ac lectus eu metus efficitur aliquam. Nulla facilisi. In hac habitasse platea dictumst.
-
-Aliquam erat volutpat. Duis sit amet accumsan sem, et accumsan ante. Morbi turpis tellus, luctus vel arcu vitae, dapibus mattis elit. Duis at suscipit velit. Sed sodales euismod dolor, a ornare tellus consequat a. Donec luctus convallis rhoncus. Fusce tristique vel felis id ultricies. Quisque venenatis dui nunc, a ornare lectus consectetur sit amet. Ut pellentesque semper tincidunt.
-
-Vivamus semper aliquam condimentum. Nulla vitae ornare elit, nec posuere magna. Donec diam nisi, rhoncus eget efficitur et, interdum lobortis arcu. Mauris mattis augue sit amet eros convallis, eget pretium diam lobortis. Vivamus id pulvinar sapien, ac auctor metus. Nunc tempor nisi ut pharetra ultricies. Nunc nec quam elementum, faucibus neque eget, luctus felis. Phasellus maximus finibus orci ut suscipit. Aliquam sollicitudin nisl eget justo tristique accumsan. In consectetur tincidunt vulputate. Interdum et malesuada fames ac ante ipsum primis in faucibus. Duis cursus volutpat libero. Praesent congue placerat quam, et vestibulum nunc. Mauris tempor elit ac nisi dictum, non mollis leo posuere.
-
-Phasellus dapibus libero velit, ac rhoncus mauris hendrerit in. Cras cursus, tortor vel varius consectetur, tortor leo viverra nulla, eget pretium magna ex sit amet ligula. Nulla eu lacus magna. Curabitur at leo vel libero sollicitudin mollis eu ut nulla. Integer accumsan dapibus lorem, quis scelerisque mauris gravida eget. Mauris viverra pulvinar dui, et iaculis orci egestas sit amet. Sed dapibus, felis eu venenatis facilisis, leo ligula elementum ante, eget faucibus dolor diam vitae odio. Vestibulum lorem leo, mollis quis faucibus et, congue id nisi. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Praesent at enim ac purus euismod vulputate. Morbi eu rutrum felis.
-
-Nulla sed tortor vel augue consequat feugiat eu eu nisi. Nullam tincidunt purus vitae accumsan tempor. Suspendisse sit amet malesuada enim. Aliquam neque orci, efficitur in arcu vitae, ultrices facilisis diam. Praesent non odio tristique, egestas ipsum quis, tincidunt leo. Vestibulum ut sapien pretium nulla condimentum fringilla placerat rhoncus dui. Quisque in pretium tortor. Nulla odio lorem, hendrerit sit amet massa a, sodales ornare massa. Aliquam feugiat lorem in posuere pellentesque. Ut aliquam imperdiet purus, non mattis magna sodales et. Vivamus eu congue dui. Curabitur elit justo, tempus non sagittis non, sagittis quis neque. Vestibulum posuere ullamcorper libero sit amet facilisis.
-
-Ut id posuere mauris, nec dignissim lacus. Nullam eu sollicitudin dui. Quisque luctus neque odio, eget tempor ipsum dapibus quis. Aenean tristique sapien ac erat aliquet vulputate. Proin eu luctus arcu. Pellentesque ut sollicitudin lacus. Phasellus faucibus eu nisi vel vulputate. Fusce iaculis at velit non porta. Suspendisse at ullamcorper lectus, sed tincidunt ipsum. Suspendisse lacinia viverra bibendum. Aenean eget mauris neque. Donec quis lectus ante.
-
-Sed a metus nec massa scelerisque cursus vel vel nunc. Praesent non nisi at arcu congue vulputate ac at ex. Donec hendrerit porta quam, ullamcorper congue purus tincidunt sed. Donec quis dui ex. Aenean sagittis tempus magna nec varius. In nec velit quis augue viverra commodo quis nec ipsum. Quisque cursus ullamcorper finibus. Quisque pharetra ligula ut elementum rhoncus. Proin vitae elit est. Sed commodo sapien a odio interdum, non egestas est fermentum. Suspendisse commodo magna at feugiat feugiat. Sed lobortis congue ante id gravida. Curabitur quis condimentum risus, ut malesuada ipsum. Morbi non ultricies nunc, sed mollis arcu. Vestibulum felis justo, tristique a est ac, tristique commodo ex.
-</p>
 
 {% endblock content %}
 
@@ -42,12 +20,15 @@ Sed a metus nec massa scelerisque cursus vel vel nunc. Praesent non nisi at arcu
         {% if not projectCount == 0 %}
         
         
-            <div class="" style="overflow-y: scroll !important; height: 61vh; width: 100%;">
+            <div class="" style="overflow-y: scroll !important; 
+            height: 100%; width: 100%;">
 
                 {% for project in projects %}
                 
                     <a class="border-bottom" >
-                        <button class="btn btn-toggle align-items-center rounded collapsed  btn-primary "  style="width:100%;"  data-bs-toggle="collapse" data-bs-target="#dashboard-collapse{{project.id}}" aria-expanded="false">
+                        <button class="btn btn-toggle align-items-center rounded collapsed  btn-primary d-block text-break"  
+                        style="width:100%;word-wrap: break-word;"
+                          data-bs-toggle="collapse" data-bs-target="#dashboard-collapse{{project.id}}" aria-expanded="false">
                         <i class="fas fa-caret-down "></i>
                             {{project.title}}
                         
@@ -64,8 +45,13 @@ Sed a metus nec massa scelerisque cursus vel vel nunc. Praesent non nisi at arcu
                             </li>
                             {% for task in project.tasks %}
                             
-                                <li><a class="text-decoration-none text-light p-4" href="{% url 'todo-task' task.id %}">
-                                {{task}}</a>
+                                <li>
+                                    <a 
+                                    class="text-decoration-none text-light p-4 text-break " 
+                                    style="width:100%;"
+                                    href="{% url 'todo-task' project.title task.id %}">
+                                    {{task}}
+                                    </a>
                                 </li>
                             
                             {% endfor %}

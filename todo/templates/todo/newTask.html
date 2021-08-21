@@ -20,3 +20,31 @@
     
 
 {%endblock content %}
+
+
+{% block sidebarTasks %}
+<h4 class="text-decoration-none text-light p-4 text-center border-bottom" style="width: 80%;"> {{title}} </h4>    
+
+
+
+
+{% for task in tasks %}
+    
+        <div class="" style="overflow-y: scroll !important; width: 100%;">
+            <ul class="btn-toggle-nav list-unstyled fw-normal p-0 ">
+                <li>
+                    <a class="text-decoration-none text-light p-4" 
+                    href="{% url 'todo-task' title task.id %}">{{task}}</a>
+                </li>
+                    
+            </ul>
+                    
+                    
+        </div>
+
+    
+    
+    {% endfor %}
+
+
+{% endblock sidebarTasks %}

@@ -4,8 +4,8 @@ from django.shortcuts import redirect, render
 from .forms import NewProjectForm, NewTaskForm
 from django.contrib import messages
 from django.contrib.auth.models import User
-# Create your views here.
 
+import json
 
 def home(request):
     
@@ -34,7 +34,7 @@ def home(request):
     
     return render(request, "todo/home.html", context)
 
-def task(request, id):
+def task(request,  projectTitle, id):
 
     obj = Task.objects.filter(id=id).first()
     if request.method == "POST":
@@ -44,17 +44,19 @@ def task(request, id):
             form.save(commit=False)
             form.save()
             messages.success(request, "Task Edited Successfully!")
-            return redirect("todo-task", id=obj.id)
+            return redirect("todo-task", projectTitle=projectTitle, id=obj.id)
     else:
         form = NewTaskForm(instance=obj)
    
 
 
+    tasks = Task.objects.filter(project__project_title=projectTitle)
 
-    author = request.user
-    tasksNotCleaned = Task.objects.filter(author=author)
-    tasks = [{"title": x[2], "id": x[0]} for x in tasksNotCleaned.values_list()]
-    context = {"tasks":tasks, "form":form}
+    task = Task.objects.filter(id=id)
+    task = task.first()
+    
+    
+    context = {"tasks":tasks, "form":form, "title":projectTitle, "task":task, "id":id}
     return render(request, "todo/task.html", context)
 
 
@@ -73,11 +75,14 @@ def newTask(request, projectTitle):
             form.save()
             # done = form.cleaned_data.get("task_done")
             messages.success(request, "Task Posted!")
-            return redirect("todo-task", id=task.id)
+            return redirect("todo-task", projectTitle=projectTitle, id=task.id)
         
     else:
         form = NewTaskForm()
-    context=  {"form": form} 
+
+    tasks = Task.objects.filter(project__project_title=projectTitle)
+
+    context=  {"form": form, "tasks":tasks, "title":projectTitle} 
     return render(request, "todo/newTask.html", context)
 
 
@@ -102,4 +107,22 @@ def newProject(request):
     return render(request, "todo/newProject.html", context)
 
 
+# def editTask(request, id):
+#     obj = Task.objects.filter(id=id).first()
+#     if request.method == "PUT":
+#         form = NewTaskForm(request.PUT or None, instance=obj)
 
+#         if form.is_valid():
+#             form.save(commit=False)
+#             form.save()
+#             messages.success(request, "Poem Edited!")
+#             return redirect("blog-poem", id=obj.id)
+#     else:
+#         form = NewTaskForm(instance=obj)
+
+#     return redirect("todo-task", projectTitle=obj.project, id=id)
+
+def deleteTask(request, id):
+    obj = Task.objects.filter(id=id)
+    obj.delete()
+    return redirect("todo-home")

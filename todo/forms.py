@@ -10,6 +10,8 @@ class NewTaskForm(forms.ModelForm):
     class Meta:
         model = Task
         fields = ["task_title", "task_content"]
+    
+
 
 
 class NewProjectForm(forms.ModelForm):
@@ -19,3 +21,8 @@ class NewProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = ["project_title"]
+    class Media:
+        js = ('ckeditor/ckeditor.js',) # The , at the end of this list IS important.
+        css = {
+            'all': ('ckeditor/contents.css',)
+        }

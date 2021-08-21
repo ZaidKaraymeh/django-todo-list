@@ -1,10 +1,10 @@
 {% extends 'todo/base.html' %}
-
+{% load static %}
 
 {% load crispy_forms_tags %}
 {% block content %}
 
-    <form  method="POST">
+  <form  method="POST">
         {% csrf_token %}
         
         <fieldset class="form-group"> 
@@ -14,18 +14,73 @@
         </fieldset>
         <div class="form-group">
             <button type="submit" class="btn btn-primary" > Submit </button>
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              Delete Task
+            </button>
         </div>
-    </form>
+  </form>
+
+
+    <!-- Button trigger modal -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-dark">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Task</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-dark">
+        <p>are you sure you want to delete "{{task}}" </p> 
+      </div>
+      <div class="modal-footer">
+        <div class="modal-footer">
+                    <form action="{% url "todo-task-delete" id=id %}" method="POST" >
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button id="{{task.id}}" type="submit" class="btn btn-outline-secondary " > Delete Task </button>
+                        </div>
+                    </form>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
 {%endblock content %}
 
 
 {% block sidebarTasks %}
+  <h4 
+    class="text-decoration-none text-light p-4 text-center border-bottom" 
+    style="width: 80%;"
+    > 
 
+    {{title}} 
+
+  </h4> 
+  <a 
+  class="text-decoration-none text-light p-4" 
+  href="{% url 'todo-newTask' title%}">
+  
+    <i class="far fa-plus-square"></i> New Task
+  
+  </a> 
+<div class="" style="overflow-y: scroll !important;  width: 100%;">
+
+
+  <ul class="btn-toggle-nav list-unstyled fw-normal p-0 ">
     {% for task in tasks %}
     
-        <a class="text-decoration-none text-light p-4" href="{% url 'todo-task' task.id %}">
-        {{task.title}}</a>
+      <li>
+          <a class="text-decoration-none text-light p-4" 
+          href="{% url 'todo-task' title task.id %}">{{task}}</a>
+      </li>
     
     {% endfor %}
+  </ul>
+</div>
+
 
 {% endblock sidebarTasks %}

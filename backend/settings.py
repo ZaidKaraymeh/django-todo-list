@@ -122,7 +122,12 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-
+#STATIC_ROOT = (os.path.join(SITE_ROOT, 'static_files/'))
+import os
+SITE_ROOT = os.path.dirname(os.path.realpath(__file__))
+STATICFILES_DIRS = (
+  os.path.join(SITE_ROOT, 'static/'),
+)
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
@@ -130,8 +135,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 import os
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = "/media/"
-STATIC_ROOT  =   os.path.join(BASE_DIR, 'static')
-STATIC_URL = '/static/'
+
 
 LOGIN_REDIRECT_URL = "todo-home"
 LOGIN_URL = "login"
@@ -141,7 +145,11 @@ CKEDITOR_CONFIGS = {
     'default': {
         'width': 'auto',
         "skin": "moono-lisa",
+        'styles': { 'background-color': '#15202b' },
         'toolbar': 'Custom',
+        'contentsCss': 'html, iframe, body {color: #fff; background-color: #15202b}',
+        "uiColor": "rgb(20, 32, 143)",
+
         'toolbar_Custom': [
         [
             "Styles",
@@ -158,9 +166,9 @@ CKEDITOR_CONFIGS = {
 
         ["Link", "Unlink", "Anchor"],
         
-        ["Image", "Flash", "Table", "HorizontalRule"],
+        ["Image", "Table", "HorizontalRule"],
         ["TextColor", "BGColor"],
-        ["Smiley", "SpecialChar"],
+        
         ]
     }
 }
