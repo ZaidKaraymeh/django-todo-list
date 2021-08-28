@@ -1,1 +1,1 @@
-web: gunicorn hoppyzone.wsgi
+web: gunicorn backend.wsgi
