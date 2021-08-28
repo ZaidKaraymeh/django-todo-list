@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-0+&rb+jfsa2#q%4ut7g(#_8_1bo3l@%s8w$at)x+v4%o7+71%r'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "projectmanagerdjango.herokuapp.com"]
 
@@ -175,6 +175,6 @@ CKEDITOR_CONFIGS = {
         ]
     }
 }
-# import dj_database_url 
-# prod_db  =  dj_database_url.config(conn_max_age=None)
-# DATABASES['default'].update(prod_db)
+import dj_database_url 
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
