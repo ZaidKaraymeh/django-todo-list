@@ -8,29 +8,30 @@ from django.contrib.auth.models import User
 import json
 
 def home(request):
-    
-    author = request.user
-    tasksNotCleaned = Task.objects.filter(author=author)
+    context = {}
+    if request.user.is_authenticated:
+        author = request.user
+        tasksNotCleaned = Task.objects.filter(author=author)
 
-    tasks = [{"task_title": x[2], "id": x[0],} for x in tasksNotCleaned.values_list()]
+        tasks = [{"task_title": x[2], "id": x[0],} for x in tasksNotCleaned.values_list()]
 
-    print("Project Titles: " ,[x for x in tasks])
-    print(request.user.id)
-    user = User.objects.get(username=f"{request.user}")
-    projectsNotCleaned = user.project_set.all()
-    print(projectsNotCleaned)
-    projects =   [{
-        "title": x[2], 
-        "id": x[0], 
-        "tasks":
-        list(Task.objects.filter(project__project_title = x[2])) 
-    
-    }for x in projectsNotCleaned.values_list()]
-    # Task.objects.filter(project__project_title= "iPhone 12").count()
+        print("Project Titles: " ,[x for x in tasks])
+        print(request.user.id)
+        user = User.objects.get(username=f"{request.user}")
+        projectsNotCleaned = user.project_set.all()
+        print(projectsNotCleaned)
+        projects =   [{
+            "title": x[2], 
+            "id": x[0], 
+            "tasks":
+            list(Task.objects.filter(project__project_title = x[2])) 
+        
+        }for x in projectsNotCleaned.values_list()]
+        # Task.objects.filter(project__project_title= "iPhone 12").count()
 
-    print("Projects: ", projectsNotCleaned.values())
-    print("Tasks: ", tasksNotCleaned.values())
-    context = {"projects":projects, "projectCount": projectsNotCleaned.count()}
+        print("Projects: ", projectsNotCleaned.values())
+        print("Tasks: ", tasksNotCleaned.values())
+        context = {"projects":projects, "projectCount": projectsNotCleaned.count()}
     
     return render(request, "todo/home.html", context)
 
@@ -126,3 +127,11 @@ def deleteTask(request, id):
     obj = Task.objects.filter(id=id)
     obj.delete()
     return redirect("todo-home")
+
+def deleteProject(request, projectTitle):
+    tasks = Task.objects.filter(project_project_title=projectTitle)
+    tasks.delete()
+    project = Project.objects.filter(project_title=projectTitle)
+    return redirect("todo-home")
+
+    
