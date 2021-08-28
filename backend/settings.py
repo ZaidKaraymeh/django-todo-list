@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-0+&rb+jfsa2#q%4ut7g(#_8_1bo3l@%s8w$at)x+v4%o7+71%r
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "projectmanagerdjango.herokuapp.com"]
 
 
 # Application definition
@@ -41,10 +41,13 @@ INSTALLED_APPS = [
     "users",
     "crispy_forms",
     "ckeditor",
+
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -172,3 +175,6 @@ CKEDITOR_CONFIGS = {
         ]
     }
 }
+import dj_database_url 
+prod_db  =  dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(prod_db)
